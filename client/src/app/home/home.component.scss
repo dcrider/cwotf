@@ -1,9 +1,15 @@
-.featured {
+ .featured {
     height: 250px;
 }
 
-img {
+.homeSlider img {
     object-fit: cover;
-    height: 600px;
+    height: 500px;
     width: 100%;
 }
+
+@media (min-width: 768px) {
+    section {
+      padding: 9rem 0;
+    }
+  }
