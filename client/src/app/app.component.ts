@@ -1,7 +1,8 @@
   
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-//import { AccountService } from './account/account.service';
+import { AccountModule } from './account/account.module';
+import { AccountService } from './account/account.service';
 import { BasketService } from './basket/basket.service';
 import { IPagination } from './shared/models/pagination';
 import { IProduct } from './shared/models/product';
@@ -14,10 +15,20 @@ import { IProduct } from './shared/models/product';
 export class AppComponent implements OnInit{
   title = 'Colorado Women on the Fly';
 
-  constructor(private basketService: BasketService) { }
+  constructor(private basketService: BasketService, private accountService: AccountService) { }
 
   ngOnInit(): void {
     this.loadBasket();
+    this.loadCurrentUser();
+  }
+
+  loadCurrentUser() {
+    const token = localStorage.getItem('token');
+      this.accountService.loadCurrentUser(token).subscribe(() => {
+        console.log("loaded user");
+      }, error => {
+        console.log(error);
+      });     
   }
 
   loadBasket() {
