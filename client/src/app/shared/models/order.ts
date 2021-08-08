@@ -1,16 +1,16 @@
-//import { IAddress } from "./address";
+import { IAddress } from "./address";
 
 export interface IOrderToCreate {
     basketId: string;
     deliveryMethodId: number;
-    //shipToAddress: IAddress;
+    shipToAddress: IAddress;
 }
 
 export interface IOrder {
     id: number;
     buyerEmail: string;
     orderDate: string;
-    //shipToAddress: IAddress;
+    shipToAddress: IAddress;
     deliveryMethod: string;
     shippingPrice: number;
     orderItems: IOrderItem[];

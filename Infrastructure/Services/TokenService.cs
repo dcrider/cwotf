@@ -1,18 +1,18 @@
+using System;
+using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using System.Text;
+using Core.Entities.Identity;
 using Core.Interfaces;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using System.Collections.Generic;
-using System.Security.Claims;
-using Core.Entities.Identity;
-using System;
-using System.IdentityModel.Tokens.Jwt;
 
 namespace Infrastructure.Services
 {
     public class TokenService : ITokenService
     {
-        public readonly IConfiguration _config;
+        private readonly IConfiguration _config;
         private readonly SymmetricSecurityKey _key;
         public TokenService(IConfiguration config)
         {
@@ -22,7 +22,7 @@ namespace Infrastructure.Services
 
         public string CreateToken(AppUser user)
         {
-            var claims = new List<Claim> 
+            var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.Email, user.Email),
                 new Claim(ClaimTypes.GivenName, user.DisplayName)
@@ -39,6 +39,7 @@ namespace Infrastructure.Services
             };
 
             var tokenHandler = new JwtSecurityTokenHandler();
+
             var token = tokenHandler.CreateToken(tokenDescriptor);
 
             return tokenHandler.WriteToken(token);
