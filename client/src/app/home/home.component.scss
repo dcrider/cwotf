@@ -4,12 +4,42 @@
 
 .homeSlider img {
     object-fit: cover;
-    height: 500px;
+    height: 550px;
     width: 100%;
 }
 
 @media (min-width: 768px) {
     section {
-      padding: 9rem 0;
+      padding: 8rem 0;
+      background-color: #fff;
     }
-  }
+}
+
+section#contact {
+  background-color: #2A403D;
+}
+
+.text-primary {
+  color:#2A403D!important;
+}
+
+.btn-primary {
+  background-color: #2A403D;
+}
+
+.btn-primary:hover {
+  background-color: #c2a890;
+}
+
+#portfolio .portfolio-item .portfolio-link .portfolio-hover {
+  background: rgba(208, 86, 99, 0.8);
+}
+
+section#contact {
+  background-image: none;
+}
+
+.team-member {
+  margin-bottom:4.5rem;
+}
+  

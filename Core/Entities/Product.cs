@@ -1,3 +1,5 @@
+using System;
+
 namespace Core.Entities
 {
     public class Product : BaseEntity
@@ -8,7 +10,12 @@ namespace Core.Entities
         public string PictureUrl { get; set; }
         public ProductType ProductType { get; set; }
         public int ProductTypeId { get; set; }
-        public ProductBrand ProductBrand { get; set; }
-        public int ProductBrandId { get; set; }
+
+        //public DateTime EventDate { get; set; }
+
+
+           //public ProductBrand ProductBrand { get; set; }
+        //public int ProductBrandId { get; set; }
+        // remove brand data, we'll only need type for event types
     }
 }

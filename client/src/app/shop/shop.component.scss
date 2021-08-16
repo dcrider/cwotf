@@ -1,0 +1,55 @@
+
+
+.list-group-item {
+    cursor: pointer;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.1em;
+
+    &:focus {
+        outline: none;
+    }
+
+    &.active {
+        border-radius: 10px;
+    }
+
+    &:not(.active):hover {
+        color: #fff;
+        background-color:#a2a4a2/* rgba(233, 86, 32, 0.705)*/;
+        border-radius: 10px;
+    }
+}
+
+
+.btn-primary {
+    background-color: #2A403D;
+}
+
+.btn-primary:hover {
+    background-color: #c2a890;
+}
+
+.btn-outline-primary {
+    color: #2A403D;
+    border-color: #2A403D;
+}
+
+.btn-outline-primary:hover {
+    color:#fff;
+    background-color: #2A403D;
+}
+
+.btn-outline-success {
+    color: rgba(208, 86, 99, 1);
+    border-color: rgba(208, 86, 99, 1);
+}
+
+.btn-outline-success:hover {
+    color:#fff;
+    background-color: red;
+}
+
+.list-group-item.active {
+    background-color: #dfd7ca;
+}

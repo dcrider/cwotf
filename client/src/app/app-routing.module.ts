@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'not-found', component: NotFoundComponent, data: { breadcrumb: 'Not found' } },
   {
     path: 'shop', loadChildren: () => import('./shop/shop.module').then(mod => mod.ShopModule),
-    data: { breadcrumb: 'Shop' }
+    data: { breadcrumb: 'Events' }
   },
   {
     path: 'basket', loadChildren: () => import('./basket/basket.module').then(mod => mod.BasketModule),

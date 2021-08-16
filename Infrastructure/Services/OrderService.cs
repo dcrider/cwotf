@@ -55,7 +55,7 @@ namespace Infrastructure.Services
                 await _paymentService.CreateOrUpdatePaymentIntent(basket.PaymentIntentId);
             }
 
-            // TODO: save to db
+            // save to db
             var result = await _unitOfWork.Complete();
 
             if (result <= 0) return null;

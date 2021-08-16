@@ -128,18 +128,18 @@
     "ProductBrandId": 2
   },
   {
-    "Name": "Angular Purple Boots",
-    "Description": "Aenean nec lorem. In porttitor. Donec laoreet nonummy augue.",
-    "Price": 150,
-    "PictureUrl": "images/products/boot-ang2.png",
+    "Name": "Wyoming Cast & Blast",
+    "Description": "This is Erin's Disney Land. Set up decoys in the morning and come back to Two Rivers Inn for breakfast before jumping on a guided float trip.  The Big Horn River will spoil your usual fishing spot with its 20+ inch fish.  We will hunt ducks and geese from the bank and from the boat.  Also enjoy the World's largest hot springs. All Inclusive",
+    "Price": 1200,
+    "PictureUrl": "images/products/IMG_0599.PNG",
     "ProductTypeId": 3,
     "ProductBrandId": 1
   },
   {
-    "Name": "Angular Blue Boots",
-    "Description": "Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend. Ut nonummy.",
-    "Price": 180,
-    "PictureUrl": "images/products/boot-ang1.png",
+    "Name": "Salida Fishing Trip - All Inclusive",
+    "Description": "Drive in Friday and round up with the girls for a two-night stay in Salida, Colorado.  After breakfast we'll meet on the Arkansas River to fly fish with the guides and then warm up over dinner.  After breakfast Sunday, go fish with your new friends.  Dogs Welcome.",
+    "Price": 1000,
+    "PictureUrl": "images/products/IMG_5978.jpg",
     "ProductTypeId": 3,
     "ProductBrandId": 1
   }

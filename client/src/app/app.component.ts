@@ -1,11 +1,7 @@
   
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { AccountModule } from './account/account.module';
 import { AccountService } from './account/account.service';
 import { BasketService } from './basket/basket.service';
-import { IPagination } from './shared/models/pagination';
-import { IProduct } from './shared/models/product';
 
 @Component({
   selector: 'app-root',

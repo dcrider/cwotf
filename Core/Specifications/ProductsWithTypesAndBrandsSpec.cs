@@ -9,12 +9,12 @@ namespace Core.Specifications
         public ProductsWithTypesAndBrandsSpec(ProductSpecParams productParams) 
             : base(x =>
                 (string.IsNullOrEmpty(productParams.Search) || x.Name.ToLower().Contains(productParams.Search)) &&
-                (!productParams.BrandId.HasValue || x.ProductBrandId == productParams.BrandId) &&
+              /*  (!productParams.BrandId.HasValue  || x.ProductBrandId == productParams.BrandId ) &&*/
                 (!productParams.TypeId.HasValue || x.ProductTypeId == productParams.TypeId)
             )
         {
             AddInclude(x => x.ProductType);
-            AddInclude(x => x.ProductBrand);
+            //AddInclude(x => x.ProductBrand);
             AddOrderBy(x => x.Name);
             ApplyPaging(productParams.PageSize * (productParams.PageIndex -1), productParams.PageSize);
 
@@ -38,7 +38,7 @@ namespace Core.Specifications
         public ProductsWithTypesAndBrandsSpec(int id) : base(x => x.Id == id)
         {
             AddInclude(x => x.ProductType);
-            AddInclude(x => x.ProductBrand);
+           //AddInclude(x => x.ProductBrand);
         }
     }
 }
