@@ -1,18 +1,42 @@
 [
   {
     "Id": 1,
-    "Name": "Boards"
+    "Name": "Fly Fishing"
   },
   {
     "Id": 2,
-    "Name": "Hats"
+    "Name": "Hunting"
   },
   {
     "Id": 3,
-    "Name": "Boots"
+    "Name": "Firearm Safety"
   },
   {
     "Id": 4,
-    "Name": "Gloves"
+    "Name": "Horseback Riding"
+  },
+  {
+    "Id": 5,
+    "Name": "Survival"
+  },
+  {
+    "Id": 6,
+    "Name": "Camping"
+  },
+  {
+    "Id": 7,
+    "Name": "Happy Hour"
+  },
+  {
+    "Id": 8,
+    "Name": "Hiking"
+  },
+  {
+    "Id": 9,
+    "Name": "Fly Tying"
+  },
+  {
+    "Id": 10,
+    "Name": "Conservation"
   }
 ]

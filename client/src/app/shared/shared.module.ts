@@ -7,10 +7,18 @@ import { PagerComponent } from './components/pager/pager.component';
 import { OrderTotalsComponent } from './components/order-totals/order-totals.component';
 import { BasketSummaryComponent } from './components/basket-summary/basket-summary.component';
 import { TextInputComponent } from './components/text-input/text-input.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { ModalModule } from 'ngx-bootstrap/modal';
 import { CdkStepperModule } from '@angular/cdk/stepper';
 import { StepperComponent } from './components/stepper/stepper.component';
+//import { MatInputModule } from '@angular/material/input';
+//import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule} from '@angular/material/card';
+//import { MatSelectModule } from '@angular/material/select';
+import { MatSliderModule } from '@angular/material/slider';
+import { ContactComponent } from './components/contact/contact.component';
+
 
 @NgModule({
   declarations: [
@@ -19,15 +27,23 @@ import { StepperComponent } from './components/stepper/stepper.component';
     OrderTotalsComponent,
     BasketSummaryComponent,
     TextInputComponent,
-    StepperComponent
+    StepperComponent,
+    ContactComponent,
   ],
   imports: [
     CommonModule,
     PaginationModule.forRoot(),
     CarouselModule.forRoot(),
     ReactiveFormsModule,
+    FormsModule,
     BsDropdownModule.forRoot(),
     CdkStepperModule,
+    ModalModule,
+    //MatInputModule, 
+    //MatButtonModule,
+    MatSliderModule,
+    MatCardModule,
+    //MatSelectModule,
   ],
   exports: [
     PaginationModule,
@@ -37,10 +53,17 @@ import { StepperComponent } from './components/stepper/stepper.component';
     OrderTotalsComponent,
     BasketSummaryComponent,
     ReactiveFormsModule,
+    FormsModule,
     TextInputComponent,
     BsDropdownModule,
     CdkStepperModule,
-    StepperComponent
+    StepperComponent,
+    //MatInputModule,
+    MatSliderModule,
+    //MatButtonModule,
+    MatCardModule,
+    //MatSelectModule,
+    ContactComponent,
   ]
 })
 export class SharedModule { }

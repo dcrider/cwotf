@@ -4,7 +4,7 @@
     cursor: pointer;
     border: none;
     padding: 10px 20px;
-    font-size: 1.1em;
+    //font-size: 1.1em; //was 1.1em
 
     &:focus {
         outline: none;
@@ -19,6 +19,11 @@
         background-color:#a2a4a2/* rgba(233, 86, 32, 0.705)*/;
         border-radius: 10px;
     }
+}
+
+
+.form-inline {
+    padding-left:10px;
 }
 
 
@@ -53,3 +58,8 @@
 .list-group-item.active {
     background-color: #dfd7ca;
 }
+
+.text-warning {
+    color: rgba(208, 86, 99, 0.8)!important;
+}
+

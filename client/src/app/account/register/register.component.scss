@@ -1,0 +1,36 @@
+.btn-primary {
+    background-color:#2A403D;
+    color:#fff;
+    border-color: #325d88;
+}
+
+.btn-primary:hover {
+    background-color:#c2a890;
+    border-color: transparent;
+}
+
+.mat-slider-horizontal {
+    width:100%;
+}
+
+label.form-control {
+    border:none;
+    padding: .375rem 0
+}
+
+  
+  .row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: auto auto;
+  }
+  
+  .column {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 1;
+  }
+  

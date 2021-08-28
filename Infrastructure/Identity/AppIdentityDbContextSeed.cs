@@ -22,7 +22,13 @@ namespace Infrastructure.Identity
                         Street = "10 The Street",
                         State = "CO",
                         ZipCode = "80403"
-                    }
+                    },
+                    FoodAllergies = "Peanuts",        
+                    AgeRange = "30-40",
+                    CovidVaccinated = "Yes",
+                    OutdoorExperience = 3,
+                    Mobility = 4,
+                    CprCertified = false
                 };
 
                 await userManager.CreateAsync(user, "Pa$$w0rd");

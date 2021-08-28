@@ -4,6 +4,10 @@ import { IProduct } from '../shared/models/product';
 import { IType } from '../shared/models/productType';
 import { ShopParams } from '../shared/models/shopParams';
 import { ShopService } from './shop.service';
+import { ActivatedRoute } from '@angular/router';
+import { BreadcrumbService } from 'xng-breadcrumb';
+import { Location } from '@angular/common';
+
 
 @Component({
   selector: 'app-shop',
@@ -19,18 +23,21 @@ export class ShopComponent implements OnInit {
   totalCount: number;
   sortOptions = [
     {name: 'Alphabetical', value: 'name'},
+    {name: 'Date: Soonest first', value: 'dateDesc'},
     {name: 'Price: Low to high', value: 'priceAsc'},
-    {name: 'Price: High to low', value: 'priceDesc'},
+    {name: 'Price: High to low', value: 'priceDesc'}
   ]
 
-  constructor(private shopService: ShopService) { 
+  constructor(private shopService: ShopService, private activatedRoute: ActivatedRoute, 
+    private bcService: BreadcrumbService,private location: Location) { 
     this.shopParams = this.shopService.getShopParams();
+    this.bcService.set('@shop', '');
   }
 
   ngOnInit(): void {
-    this.getProducts(true);
     this.getBrands();
     this.getTypes();
+    this.getProducts(true);
   }
   
   getProducts(useCache = false) {
@@ -52,7 +59,15 @@ export class ShopComponent implements OnInit {
 
   getTypes() {
     this.shopService.getTypes().subscribe(response => {
-      this.types = [{id: 0, name: 'All'}, ...response];
+      this.types = [{id: 0, name: 'All', imageUrl: '', order: 0}, ...response];
+
+      if(+this.activatedRoute.snapshot.paramMap.get('id')) {
+        var typeId = +this.activatedRoute.snapshot.paramMap.get('id');
+        var eventType = this.types.find(x => x.id === typeId);
+        this.bcService.set('@eventType', eventType.name);
+        this.onTypeSelected(typeId);
+      }
+
     }, error => {
       console.log(error);
     })
@@ -68,6 +83,11 @@ export class ShopComponent implements OnInit {
 
   onTypeSelected(typeId: number) {
     const params = this.shopService.getShopParams();
+
+    var eventType = this.types.find(x => x.id === typeId);
+    this.bcService.set('@eventType', eventType.name);
+    this.location.replaceState('/shop');
+
     params.typeId = typeId;
     params.pageNumber = 1;
     this.shopService.setShopParams(params);

@@ -1,21 +1,69 @@
-<div class="d-flex justify-content-center mt-5">
-    <div class="col-3">
-        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-            <div class="text-center mb-4">
-                <h1 class="h3 mb-3 font-weight-normal">Register</h1>
+<div class="d-flex justify-content-center mt-5 mb-5">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="text-center mb-4">
+        <h1 class="h3 mb-3 font-weight-normal">Register</h1>
+    </div>
+   
+        <div class='row mb-3'>
+          <div class='column'>
+            <div class='blue-column'>
+                <app-text-input formControlName="displayName" [label]="'Display Name'"></app-text-input>
+                <app-text-input formControlName="email" [label]="'Email address'"></app-text-input>
+                <app-text-input formControlName="phoneNumber" [label]="'Phone Number'"></app-text-input>
+
+                <mat-card class="mb-3">
+                    <mat-card-content>
+                        <label class="form-control">Outdoor Experience</label>
+                        <mat-slider formControlName="experience" thumbLabel [displayWith]="formatThumbLabel" min="1"
+                            max="5">
+                        </mat-slider>
+                    </mat-card-content>
+                </mat-card>                
+
+                <select class="custom-select mb-3" formControlName="ageRange" required>
+                    <option [ngValue]="null" disabled selected>Age Range</option>
+                    <option *ngFor="let age of ageRangeArray" [ngValue]="age">{{age}}</option>
+                 </select>
+
+                 <app-text-input formControlName="interests" [label]="'Interests'"></app-text-input>
+
             </div>
+          </div>
+          <div class='column'>
+            <div class='green-column'>
+                <app-text-input formControlName="allergies" [label]="'Food Allergies'"></app-text-input>
+                <app-text-input formControlName="cprCertified" [label]="'CPR Certified'"></app-text-input>
 
-            <app-text-input formControlName="displayName" [label]="'Display Name'"></app-text-input>
-            <app-text-input formControlName="email" [label]="'Email address'"></app-text-input>
-            <app-text-input formControlName="password" [label]="'Password'" [type]="'password'"></app-text-input>
-
+                <mat-card class="mb-3">
+                    <mat-card-content>
+                        <label class="form-control">Mobility</label>
+                        <mat-slider formControlName="mobility" thumbLabel [displayWith]="formatThumbLabel" min="1"
+                            max="5">
+                        </mat-slider>
+                    </mat-card-content>
+                </mat-card>             
+    
+                 <!-- <ng-multiselect-dropdown class="custom-select mb-3" formControlName="interests" required>
+                    <option [ngValue]="null">What are you interests?</option>
+                    <option *ngFor="let interest of interests" [ngValue]="interest">{{interest}}
+                    </option>
+                 </ng-multiselect-dropdown> -->
+    
+                <select class="custom-select mb-3" formControlName="covidVax" required>
+                    <option value="null" disabled selected>Covid Vaccinated</option>
+                    <option *ngFor="let vax of covidVaxArray" [ngValue]="vax">{{vax}}</option>
+                 </select>
+                
+                 <app-text-input formControlName="password" [label]="'Password'" [type]="'password'"></app-text-input>
+                <app-text-input formControlName="confirmPassword" [label]="'Confirm Password'" [type]="'password'"></app-text-input>
+            </div>
+          </div>
+        </div>
             <ul class="text-danger list-unstyled" *ngIf="errors">
                 <li *ngFor="let error of errors">
                     {{error}}
                 </li>
             </ul>
-
-            <button  class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
         </form>
-    </div>
 </div>

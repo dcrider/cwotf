@@ -1,0 +1,18 @@
+[
+    {
+        "Id": 1,
+        "UserId": "1754d76c-f426-472b-bd9c-806d5e1adcca", 
+        "InterestId": 1 
+    },
+    {
+        "Id": 2,
+        "UserId": "1754d76c-f426-472b-bd9c-806d5e1adcca", 
+        "InterestId": 3
+    },
+    {
+        "Id": 3,
+        "UserId": "1754d76c-f426-472b-bd9c-806d5e1adcca", 
+        "InterestId": 4 
+    }
+
+]

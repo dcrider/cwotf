@@ -18,6 +18,21 @@ namespace Infrastructure.Data
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<DeliveryMethod> DeliveryMethods { get; set; }
+
+        public DbSet<EventImage> EventImages { get; set; }
+
+
+        public DbSet<BlogTopic> BlogTopics { get; set; }
+        public DbSet<BlogPost> BlogPosts { get; set; }
+
+        public DbSet<CommunityThread> CommunityThreads { get; set; }
+
+        public DbSet<CommunityPost> CommunityPosts { get; set; }
+
+
+        public DbSet<Interest> Interests { get; set; }
+        public DbSet<UserInterest> UserInterests { get; set; }
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());

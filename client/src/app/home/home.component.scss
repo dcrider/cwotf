@@ -10,14 +10,11 @@
 
 @media (min-width: 768px) {
     section {
-      padding: 8rem 0;
+      padding: 6rem 0; //changed from 8..
       background-color: #fff;
     }
 }
 
-section#contact {
-  background-color: #2A403D;
-}
 
 .text-primary {
   color:#2A403D!important;
@@ -35,11 +32,20 @@ section#contact {
   background: rgba(208, 86, 99, 0.8);
 }
 
-section#contact {
-  background-image: none;
-}
+
 
 .team-member {
   margin-bottom:4.5rem;
 }
-  
+
+.team-member img:hover {
+  background-color:rgba(42, 64, 61, .7);
+}
+
+.svg-inline--fa.fa-stack-2x {
+  width:1em;
+}
+
+a:hover {
+  cursor:pointer;
+}

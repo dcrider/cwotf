@@ -2,8 +2,9 @@
 @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 @import "../node_modules/ngx-bootstrap/datepicker/bs-datepicker.css";
 @import "../node_modules/bootswatch/dist/sandstone/bootstrap.min.css";
-@import "../node_modules/font-awesome/css/font-awesome.min.css";
+//@import "../node_modules/font-awesome/css/font-awesome.min.css";
 @import "../node_modules/ngx-toastr/toastr.css";
+@import "../node_modules/@angular/material/prebuilt-themes/indigo-pink.css";
 
 .xng-breadcrumb-root {
     padding: 8px 16px;
@@ -39,6 +40,38 @@ a:hover {
 body {
     background-color: #f8f5f0!important;
 }
+
+@media (min-width: 992px) {
+    .modal-dialog {
+      max-width: 900px;
+      margin: 1.75rem auto;
+    }
+
+    .list-group-item { 
+        font-size:1.1em;
+    }
+}
+
+@media (max-width: 800px) {
+
+    .list-group-item { 
+        font-size:0.8em;
+    }
+}
+
+@media (max-width: 565px) {
+
+    .list-group-item { 
+        font-size:0.7em;
+    }
+
+    .pagingText {
+        font-size:0.7em;
+    }
+}
+
+
+
 
 
 

@@ -73,9 +73,11 @@ namespace API.Controllers
 
         [Cached(600)]
         [HttpGet("types")]
-        public async Task<ActionResult<IReadOnlyList<ProductBrand>>> GetTypes()
+        public async Task<ActionResult<IReadOnlyList<ProductTypeToReturnDTO>>> GetTypes()
         {
-            return Ok(await _productTypeRepo.ListAllAsync());
+            var types = await _productTypeRepo.ListAllAsync();
+            return Ok(_mapper.Map<IReadOnlyList<ProductTypeToReturnDTO>>(types));
+
         }
     }
 }

@@ -10,10 +10,15 @@ import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { LoadingInterceptor } from './core/interceptors/loading.interceptors';
 import { JwtInterceptor } from './core/interceptors/jwt.interceptor';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { PrivacyPolicyComponent } from './privacy/privacy.component';
+import { TermsComponent } from './terms/terms.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PrivacyPolicyComponent,
+    TermsComponent
   ],
   imports: [
     BrowserModule,
@@ -22,9 +27,10 @@ import { JwtInterceptor } from './core/interceptors/jwt.interceptor';
     HttpClientModule,
     CoreModule,
     HomeModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    
   ],
-  providers: [
+  providers: [BsModalService,
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}

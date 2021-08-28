@@ -29,6 +29,32 @@ namespace Infrastructure.Data
                     await context.SaveChangesAsync();
                 }
 
+                if (!context.Interests.Any())
+                {
+                    var interestData = File.ReadAllText("../Infrastructure/Data/SeedData/interests.json");
+                    var interests = JsonSerializer.Deserialize<List<Interest>>(interestData);
+
+                    foreach (var interest in interests)
+                    {
+                        context.Interests.Add(interest);
+                    }
+
+                    await context.SaveChangesAsync();
+                }
+
+                if (!context.UserInterests.Any())
+                {
+                    var userInterestData = File.ReadAllText("../Infrastructure/Data/SeedData/userInterests.json");
+                    var userInterests = JsonSerializer.Deserialize<List<UserInterest>>(userInterestData);
+
+                    foreach (var interest in userInterests)
+                    {
+                        context.UserInterests.Add(interest);
+                    }
+
+                    await context.SaveChangesAsync();
+                }
+
                 if (!context.ProductTypes.Any())
                 {
                     var typesData = File.ReadAllText("../Infrastructure/Data/SeedData/types.json");
