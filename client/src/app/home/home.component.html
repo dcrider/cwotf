@@ -23,14 +23,14 @@
                 For women, by women...with help from gentlemen.
             </h3>
         </div>
-        <div class="row text-center mb-4">
+        <div class="row text-center mb-3">
             <div class="col-md-4 mb-2">
                 <span class="fa-stack fa-4x">
                     <i class="fa fa-circle fa-stack-2x text-primary"></i>
                     <i class="fad fa-hands-helping fa-stack-1x fa-inverse"></i>
                 </span>
                 <h4 class="my-3">Community</h4>
-                <p class="text-muted">Connecting like-minded women.</p>
+                <p class="text-muted" style="padding-bottom:1.5em">Connecting like-minded women.</p>
             </div>
             <div class="col-md-4 mb-2">
                 <span class="fa-stack fa-4x">
@@ -38,7 +38,7 @@
                     <i class="fa fa-globe fa-stack-1x fa-inverse"></i>
                 </span>
                 <h4 class="my-3">Conservation</h4>
-                <p class="text-muted">Preservation today for recreation tomorrow.</p>
+                <p class="text-muted" style="padding-bottom:1.5em">Preservation today for recreation tomorrow.</p>
             </div>
             <div class="col-md-4 mb-2">
                 <span class="fa-stack fa-4x">
@@ -46,7 +46,7 @@
                     <i class="fa fa-child fa-stack-1x fa-inverse"></i>
                 </span>
                 <h4 class="my-3">Confidence</h4>
-                <p class="text-muted">Building skills for mental health and survival.</p>
+                <p class="text-muted" style="padding-bottom:1.5em">Building skills for mental health and survival.</p>
             </div>
         </div>
         <div class="row">
@@ -58,6 +58,17 @@
         </div> 
     </div>
 </section>
+
+<!-- <ng-masonry-grid
+    (onNgMasonryInit)="onNgMasonryInit($event)"
+    (layoutComplete)="layoutComplete($event)" 
+    (removeComplete)="removeGridItem($event)">
+    <ng-masonry-grid-item 
+        id="{{'masonry-item-'+i}}" 
+        *ngFor="let item of masonryItems; let i = index;" 
+        (click)="removeItem($event)">
+    </ng-masonry-grid-item>
+</ng-masonry-grid> -->
 
 <!-- Portfolio Grid-->
 <section class="page-section bg-light" id="portfolio">
@@ -72,12 +83,12 @@
                 <div class="portfolio-item">
                     <a class="portfolio-link" routerLink="/shop/type/{{event.id}}">
                         <div class="portfolio-hover">
-                            <div class="portfolio-hover-content"><i class="fa fa-plus fa-3x"></i></div>
+                            <div class="portfolio-hover-content"><i class="fad fa-search-plus fa-3x"></i></div>
                         </div>
                         <img class="img-fluid" src="{{event.imageUrl}}" alt="{{event.name}}" />
                     </a>
                     <div class="portfolio-caption">
-                        <div class="portfolio-caption-heading">event.name</div>
+                        <div class="portfolio-caption-heading">{{event.name}}</div>
                         <div class="portfolio-caption-subheading text-muted"><a routerLink="/shop/type/{{event.id}}">Check out our events</a></div>
                     </div>
                 </div>
@@ -227,3 +238,5 @@
        <button type="button" class="btn btn-default" (click)="modalRef.hide()">Close</button>
     </div>
  </ng-template>
+
+ 

@@ -16,8 +16,12 @@ namespace API.Extensions
             var builder = services.AddIdentityCore<AppUser>();
 
             builder = new IdentityBuilder(builder.UserType, builder.Services);
-            builder.AddEntityFrameworkStores<AppIdentityDbContext>();
-            builder.AddSignInManager<SignInManager<AppUser>>();
+                builder.AddRoles<IdentityRole>();
+                builder.AddEntityFrameworkStores<AppIdentityDbContext>();
+                builder.AddSignInManager<SignInManager<AppUser>>();
+                builder.AddRoles<IdentityRole>();
+                builder.AddRoleManager<RoleManager<IdentityRole>>();
+
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options => 

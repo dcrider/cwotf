@@ -27,6 +27,7 @@ namespace API.Helpers
                 .ForMember(d => d.PictureUrl, o => o.MapFrom<OrderItemUrlResolver>());
             CreateMap<ProductType, ProductTypeToReturnDTO>()
                 .ForMember(d => d.ImageUrl, o => o.MapFrom<ProductTypeUrlResolver>());
+            CreateMap<Interest, InterestDTO>();
         }
     }
 }

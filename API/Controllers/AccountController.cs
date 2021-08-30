@@ -1,9 +1,11 @@
+using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using API.DTOs;
 using API.Errors;
 using API.Extensions;
 using AutoMapper;
+using Core.Entities;
 using Core.Entities.Identity;
 using Core.Interfaces;
 using Microsoft.AspNetCore.Authorization;
@@ -18,15 +20,17 @@ namespace API.Controllers
         private readonly SignInManager<AppUser> _signInManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly ITokenService _tokenService;
+        private readonly IGenericRepository<Interest> _interestRepo;
         private readonly IMapper _mapper;
         public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager,
-            RoleManager<IdentityRole> roleManager, ITokenService tokenService, IMapper mapper)
+            RoleManager<IdentityRole> roleManager, ITokenService tokenService, IMapper mapper, IGenericRepository<Interest> interestService)
         {
             _mapper = mapper;
             _tokenService = tokenService;
             _signInManager = signInManager;
             _userManager = userManager;
             _roleManager = roleManager;
+            _interestRepo = interestService;
         }
 
         [Authorize]
@@ -49,12 +53,18 @@ namespace API.Controllers
             return await _userManager.FindByEmailAsync(email) != null;
         }
 
+        [HttpGet("interests")]
+        public async Task<ActionResult<IReadOnlyList<InterestDTO>>> GetInterests()
+        {
+            var result = await _interestRepo.ListAllAsync();
+            return Ok(_mapper.Map<IReadOnlyList<InterestDTO>>(result));
+        }
+
         [Authorize]
         [HttpGet("address")]
         public async Task<ActionResult<AddressDTO>> GetUserAddress()
         {
             var user = await _userManager.FindByEmailWithAddressAsync(User);
-
             return _mapper.Map<AddressDTO>(user.Address);
         }
 
@@ -144,8 +154,13 @@ namespace API.Controllers
             var result = await _userManager.CreateAsync(user, registerDto.Password);
             
             if (!result.Succeeded) return BadRequest(new ApiResponse(400));
+
             //add general user role
-            //_userManager.AddToRoleAsync
+            var newUser = await _userManager.FindByEmailAsync(user.Email);
+            var roleAdded = await _userManager.AddToRoleAsync(newUser, "customer");
+            //will eventually need to be able to add employees.  Admins will be manual.
+            //get user roles
+            var roles = _userManager.GetRolesAsync(user).Result;
 
             //create user profile record?
             
@@ -159,7 +174,8 @@ namespace API.Controllers
                 CovidVaccinated = registerDto.CovidVaccinated,
                 OutdoorExperience = registerDto.OutdoorExperience,
                 Mobility = registerDto.Mobility,
-                CprCertified = registerDto.CprCertified
+                CprCertified = registerDto.CprCertified,
+                Roles = roles
             };
         }
     }

@@ -3,6 +3,7 @@ import { IType } from '../shared/models/productType';
 import { ShopParams } from '../shared/models/shopParams';
 import { ShopService } from '../shop/shop.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { Masonry, MasonryGridItem } from 'ng-masonry-grid';
 
 @Component({
   selector: 'app-home',
@@ -106,10 +107,14 @@ export class HomeComponent implements OnInit {
     }
 
   ];
+  _masonry: Masonry;
+  masonryItems: any[]; // NgMasonryGrid Grid item list
   
   constructor(private shopService: ShopService, public modalService: BsModalService) { 
     this.shopParams = this.shopService.getShopParams();
   }
+
+  
 
   ngOnInit(): void {
     this.getTypes();
@@ -122,10 +127,59 @@ export class HomeComponent implements OnInit {
   getTypes() {
     this.shopService.getTypes().subscribe(response => {
       this.eventRepeater = [...response];
+      this.masonryItems = [...response];
       this.eventList = [{id: 0, name: 'All', imageUrl: '', order: 0}, ...response];
     }, error => {
       console.log(error);
     })
   }
+
+  // Get ng masonry grid instance first
+onNgMasonryInit($event: Masonry) {
+  this._masonry = $event;
+}
+ 
+
+// Remove selected item from NgMasonryGrid, For example, (click)="removeItem($event)" event binding on grid item
+// Note: 'id' on ng-masonry-grid is required to remove actual item from the list
+removeItem($event: any) {
+  if (this._masonry) {
+    this._masonry.removeItem($event.currentTarget)  // removeItem() expects actual DOM (ng-masonry-grid-item element)
+        .subscribe((item: MasonryGridItem) => { // item: removed grid item DOM from NgMasonryGrid
+          if (item) {
+            let id = item.element.getAttribute('id'); // Get id attribute and then find index 
+            let index = id.split('-')[2];
+            // remove grid item from Masonry binding using index (because actual Masonry items order is different from this.masonryItems items) 
+            this.masonryItems.splice(index, 1); 
+          }
+        });
+  }
+}
+ 
+// Remove first item from NgMasonryGrid
+removeFirstItem() {
+  if (this._masonry) {
+    this._masonry.removeFirstItem()
+        .subscribe( (item: MasonryGridItem) => {
+          if (item) {
+            let id = item.element.getAttribute('id');
+            let index = id.split('-')[2];
+            this.masonryItems.splice(index, 1);
+          }
+        });
+  }
+}
+ 
+// Remove all items from NgMasonryGrid
+removeAllItems() {
+  if (this._masonry) {
+    this._masonry.removeAllItems()
+        .subscribe( (items: MasonryGridItem) => {
+            // remove all items from the list
+            this.masonryItems = [];
+        });
+  }
+}
+ 
 
 }

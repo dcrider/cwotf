@@ -13,12 +13,15 @@ import { JwtInterceptor } from './core/interceptors/jwt.interceptor';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { PrivacyPolicyComponent } from './privacy/privacy.component';
 import { TermsComponent } from './terms/terms.component';
+import { AdminComponent } from './admin/admin.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     PrivacyPolicyComponent,
-    TermsComponent
+    TermsComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +31,6 @@ import { TermsComponent } from './terms/terms.component';
     CoreModule,
     HomeModule,
     NgxSpinnerModule,
-    
   ],
   providers: [BsModalService,
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},

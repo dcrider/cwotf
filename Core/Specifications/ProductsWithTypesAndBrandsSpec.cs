@@ -10,11 +10,14 @@ namespace Core.Specifications
             : base(x =>
                 (string.IsNullOrEmpty(productParams.Search) || x.Name.ToLower().Contains(productParams.Search)) &&
                 (!productParams.BrandId.HasValue  || x.ProductBrandId == productParams.BrandId ) &&
-                (!productParams.TypeId.HasValue || x.ProductTypeId == productParams.TypeId)
+                (!productParams.TypeId.HasValue || x.ProductTypeId == productParams.TypeId) &&
+                (productParams.EventDate == null || x.EventDate == productParams.EventDate)
             )
         {
             AddInclude(x => x.ProductType);
             AddInclude(x => x.ProductBrand);
+            // AddInclude(x => x.Images);
+            // AddInclude(x=> x.EventWaivers);
             AddOrderBy(x => x.Name);
             ApplyPaging(productParams.PageSize * (productParams.PageIndex -1), productParams.PageSize);
 
@@ -28,6 +31,9 @@ namespace Core.Specifications
                     case "priceDesc":
                         AddOrderByDesc(p => p.Price);
                         break;
+                    case "dateDesc":
+                        AddOrderByDesc(p => p.EventDate);
+                        break;
                     default:
                         AddOrderBy(n => n.Name);
                         break;
@@ -39,6 +45,7 @@ namespace Core.Specifications
         {
             AddInclude(x => x.ProductType);
             AddInclude(x => x.Images);
+            AddInclude(x=> x.EventWaivers);
            //AddInclude(x => x.ProductBrand);
         }
     }

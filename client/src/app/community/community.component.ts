@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { BreadcrumbService } from 'xng-breadcrumb';
+import { CommunityService } from './community.service';
 
 @Component({
   selector: 'app-community',
@@ -7,7 +10,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CommunityComponent implements OnInit {
 
-  constructor() { }
+  constructor(private communityService: CommunityService, private activatedRoute: ActivatedRoute, 
+    private bcService: BreadcrumbService) { 
+    //this.bcService.set('@community', '');
+  }
 
   ngOnInit(): void {
   }

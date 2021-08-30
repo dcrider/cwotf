@@ -23,16 +23,28 @@
                 <select class="custom-select mb-3" formControlName="ageRange" required>
                     <option [ngValue]="null" disabled selected>Age Range</option>
                     <option *ngFor="let age of ageRangeArray" [ngValue]="age">{{age}}</option>
-                 </select>
-
-                 <app-text-input formControlName="interests" [label]="'Interests'"></app-text-input>
+                </select>
+               
+                <ng-multiselect-dropdown
+                    [placeholder]='"Your Interests"'
+                    [settings]="dropdownSettings"
+                    [data]="interests"
+                    formControlName="interests"
+                    (onSelect)="onItemSelect($event)"
+                    (onSelectAll)="onSelectAll($event)">
+                </ng-multiselect-dropdown>
 
             </div>
           </div>
           <div class='column'>
             <div class='green-column'>
                 <app-text-input formControlName="allergies" [label]="'Food Allergies'"></app-text-input>
-                <app-text-input formControlName="cprCertified" [label]="'CPR Certified'"></app-text-input>
+
+                <select class="custom-select mb-3" formControlName="cprCertified" required>
+                    <option [ngValue]="null" disabled selected>CPR Certified?</option>
+                    <option [ngValue]="true">Yes</option>
+                    <option [ngValue]="false">No</option>
+                </select>
 
                 <mat-card class="mb-3">
                     <mat-card-content>
@@ -42,12 +54,6 @@
                         </mat-slider>
                     </mat-card-content>
                 </mat-card>             
-    
-                 <!-- <ng-multiselect-dropdown class="custom-select mb-3" formControlName="interests" required>
-                    <option [ngValue]="null">What are you interests?</option>
-                    <option *ngFor="let interest of interests" [ngValue]="interest">{{interest}}
-                    </option>
-                 </ng-multiselect-dropdown> -->
     
                 <select class="custom-select mb-3" formControlName="covidVax" required>
                     <option value="null" disabled selected>Covid Vaccinated</option>

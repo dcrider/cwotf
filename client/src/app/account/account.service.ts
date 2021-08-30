@@ -6,6 +6,7 @@ import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { IAddress } from '../shared/models/address';
 import { IUser } from '../shared/models/user';
+import { IInterest } from '../shared/models/interest';
 
 @Injectable({
   providedIn: 'root'
@@ -74,5 +75,9 @@ export class AccountService {
 
   updateUserAddress(address: IAddress) {
     return this.http.put<IAddress>(this.baseUrl + 'account/address', address);
+  }
+
+  getInterests() {
+    return this.http.get<IInterest[]>(this.baseUrl + 'account/interests');
   }
 }
